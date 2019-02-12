@@ -1,0 +1,8 @@
+#chart svg {
+  height: 600px;
+  width: 600px;
+}
+
+.labels.segment {
+  font-size: 16px;
+}
