@@ -87,7 +87,7 @@ function circularHeatChart() {
 
       //Segment labels
       var segmentLabelOffset = 2;
-      var r = innerRadius + Math.ceil(data.length / numSegments) * segmentHeight + segmentLabelOffset;
+      var r = innerRadius + Math.ceil(data.length / numSegments) * segmentHeight + segmentLabelOffset + 5;
       labels = svg.append("g")
         .classed("labels", true)
         .classed("segment", true)
@@ -104,7 +104,7 @@ function circularHeatChart() {
         .append("textPath")
         .attr("xlink:href", "#segment-label-path-" + id)
         .attr("startOffset", function (d, i) {
-          return i * 100 / numSegments + "%";
+          return (i * 100 / numSegments) + "%";
         })
         .text(function (d) {
           return d;
@@ -115,13 +115,13 @@ function circularHeatChart() {
 
   /* Arc functions */
   ir = function (_, i) {
-    return innerRadius + Math.floor(i / numSegments) * segmentHeight;
+    return innerRadius + Math.floor(i / numSegments) * segmentHeight + 1;
   }
   or = function (_, i) {
     return innerRadius + segmentHeight + Math.floor(i / numSegments) * segmentHeight;
   }
   sa = function (_, i) {
-    return (i * 2 * Math.PI) / numSegments;
+    return (i * 2 * Math.PI) / numSegments + 0.005;
   }
   ea = function (_, i) {
     return ((i + 1) * 2 * Math.PI) / numSegments;
